@@ -1,0 +1,15 @@
+name: Fake deploy with normal Dockerfile
+on: [push]
+
+jobs:
+ fake_deploy_no_cache:
+    runs-ion: ubuntu-latest
+    steps:
+       - uses: actions/checkout@v2
+       - name: Build production image
+         id: docker_build
+         uses: docker/build-push-actions@v2
+         with:
+            context: .
+            push: false
+            tags: ${{ steps.prep.outputs.tagged_image }}
