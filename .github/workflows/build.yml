@@ -32,6 +32,8 @@ jobs:
           with:
              context: .
              builder: ${{ steps.buildx.outputs.name }}
+             build-args: |
+                CACHEBUST=$(date +%s)
              push: false
              cache-from: type=local,src=/tmp/.buildx-cache
              cache-to: type=local,dest=/tmp/.buildx-cache-new

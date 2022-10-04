@@ -13,6 +13,7 @@ RUN npm install
 # RUN npm ci --only=production
 
 # Bundle app source
+ARG CACHEBUST=1
 COPY . .
 
 EXPOSE 8080
